@@ -4,16 +4,18 @@ import cv2
 import numpy as np
 import imagehash
 from PIL import Image
+from pathlib import Path
+from typing import List, Any, Tuple, Union
 
 
 # resize image in order to prevent any error
-def resize_image(image_path):
+def resize_image(image_path: Path) -> Union[str, Path]:
     file_name, file_extension = os.path.splitext(os.path.basename(image_path))
 
     img = cv2.imread(image_path)
     height, width = img.shape[:2]
-    max_height = 900
-    max_width = 900
+    max_height = 600
+    max_width = 600
 
     # only shrink if img is bigger than required
     if max_height < height or max_width < width:
@@ -31,12 +33,12 @@ def resize_image(image_path):
 
 
 # this function reads first image to encoding
-def see_image(know_img_path):
+def see_image(know_img_path: Path) -> Tuple[Any, Any, Any, List, str]:
     know_img_path = resize_image(know_img_path)
     known_faces = []
     known_names = []
 
-    # File_name = os.path.splitext(os.path.basename(know_img_path))[0]
+    # File_name = os.path.splitext(os.path.basename(know_img_path))
     file_name, file_extension = os.path.splitext(os.path.basename(know_img_path))
     known_names.append(file_name)
 
@@ -54,9 +56,9 @@ def see_image(know_img_path):
 
 
 # This function read second image, hash the image, encode faces and the above function's face.
-def lets_recognise(un_img_path, known_faces,
-                   TOLERANCE=0.6, FRAME_THICKNESS=3,
-                   FONT_THICKNESS=3):
+def lets_recognise(un_img_path: Path, known_faces: List,
+                   TOLERANCE: int = 0.6, FRAME_THICKNESS: int = 3,
+                   FONT_THICKNESS: int = 3) -> str:
     un_img_path = resize_image(un_img_path)
     # Read image
     print('Loading unknown faces...')

@@ -83,7 +83,7 @@
         <div  class="col d-flex d-sm-flex d-md-flex d-lg-flex d-xxl-flex flex-column align-items-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xxl-center" style="margin: 2em;margin-top: 4em;background: rgba(255,255,255,0.1);margin-bottom: 4em;padding-bottom: 2em;border-radius: 24px;padding-top: 2em;">
             <div id="hidden" style="display: none" class="container">
             {% if fileupload1  %}
-                {%for i in bos_liste %}
+                {%for i in empty_list %}
                     <div class="row" style="background: rgba(255,255,255,0.1);border-radius: 12px;max-height: 108px;height: 128px;margin: 12px;padding: 8px">
                         <div class="d-flex col-md-2 d-flex justify-content-center align-items-center" style="padding-top: 12px;">
                             <p class="d-xxl-flex align-items-xxl-center" style="color: #74bc1f;font-size: 1.5em;"><strong class="date">{{i[1].split(".")[0]}}</strong></p>
