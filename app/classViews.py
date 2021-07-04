@@ -11,7 +11,7 @@ from typing import List, Optional, Tuple
 from werkzeug.datastructures import FileStorage
 
 # import functions
-from faceDetectionWebApp.app.utils import lets_recognise, see_image
+from app.utils import lets_recognise, see_image
 
 
 class flaskApp:
